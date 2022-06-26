@@ -47,13 +47,10 @@
 
   button:hover {
     background-color: #abc0d4;
-
   }
 
   .active {
-    /* Colors of korean flag ? */
     color: white;
     background-color: #0C347A;
   }
-
 </style>

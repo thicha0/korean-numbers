@@ -4,7 +4,6 @@
   import WordList from './lib/WordList.svelte'
   import Newsletter from './lib/Newsletter.svelte'
   import { activeMenu } from './store'
-  import { fade } from 'svelte/transition';
 </script>
 
 <main>
