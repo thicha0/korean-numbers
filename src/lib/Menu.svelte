@@ -34,9 +34,9 @@
     font-family: inherit;
     font-size: inherit;
     padding: 1em 2em;
+    border-radius: 2em;
     color:black;
     background-color: #D3CEDF;
-    border-radius: 2em;
     border: 2px solid rgba(255, 62, 0, 0);
     outline: none;
     width: 200px;

@@ -28,6 +28,7 @@
     text-align: center;
     padding: 1em;
     margin: 0 auto;
+    font-size: 1.2em;
   }
 
   @font-face {
