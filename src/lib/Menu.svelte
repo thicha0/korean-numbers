@@ -46,7 +46,7 @@
   }
 
   button:hover {
-    background-color: #abc0d4;
+    filter: brightness(90%);
   }
 
   .active {

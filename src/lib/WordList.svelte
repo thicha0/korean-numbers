@@ -1,4 +1,6 @@
 <script>
+  import IntersectionObserver from "svelte-intersection-observer"
+
   let words = [
     {
       id: 1,
@@ -124,6 +126,9 @@
     toSpeak.voice = voice
     speechSynthesis.speak(toSpeak)
   }
+
+  let showWords = new Array(words.length).fill(false)
+  let rows = new Array(words.length)
 </script>
 
 <form on:submit={jumpToSearch}>
@@ -138,22 +143,23 @@
 
 <div id="container">
   <table style="width: 95%">
-    <!-- TODO add transition when row appear on screen -->
-    {#each words as word}
-    <tr id="word-{word.id}" class="{(selected === word.id) ? 'highlight' : ''}">
-      <td style="width: 10%">
-        {word.id}
-      </td>
-      <td style="width: 35%">
-        <button class="sound" on:click={() => pronounceKorean(word.kr)}>
-          🔊
-        </button>
-        {word.kr}
-      </td>
-      <td style="width: 5%">
-        {word.en}
-      </td>
-    </tr>
+    {#each words as word, index}
+    <IntersectionObserver element={rows[index]} once bind:intersecting={showWords[index]}>
+      <tr id="word-{word.id}" bind:this={rows[index]} class="{(selected === word.id) ? 'highlight' : ''}" style="opacity: {showWords[index] ? '1' : '0'} !important">
+        <td style="width: 10%">
+          {word.id}
+        </td>
+        <td style="width: 35%">
+          <button class="sound" on:click={() => pronounceKorean(word.kr)}>
+            🔊
+          </button>
+          {word.kr}
+        </td>
+        <td style="width: 5%">
+          {word.en}
+        </td>
+      </tr>
+    </IntersectionObserver>
     {/each}
   </table>
 </div>
@@ -168,6 +174,7 @@
 
   tr {
     background-color: #f0e9e9;
+    transition: all 1s ease;
   }
 
   td {
@@ -211,8 +218,7 @@
   }
 
   #jump:hover {
-    background-color: #d16b6b;
-    color: white;
+    filter: brightness(90%);
   }
 
   #container {
