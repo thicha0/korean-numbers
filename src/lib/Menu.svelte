@@ -33,13 +33,13 @@
   button {
     font-family: inherit;
     font-size: inherit;
-    padding: 1em 2em;
+    padding: 0.5em;
     border-radius: 2em;
     color:black;
     background-color: #D3CEDF;
     border: 2px solid rgba(255, 62, 0, 0);
     outline: none;
-    width: 200px;
+    width: 150px;
     margin: 0 10px;
     font-variant-numeric: tabular-nums;
     cursor: pointer;

@@ -46,7 +46,7 @@
 
   input {
     border-radius: 100px;
-    padding: 15px 30px;
+    padding: 0.5em 1em;
     font-size: 1em;
     border: none;
     margin-bottom: 20px;
@@ -56,13 +56,13 @@
   button {
     font-family: inherit;
     font-size: inherit;
-    padding: 1em 2em;
+    padding: 0.5em;
     color:white;
     background-color: #0C347A;
     border-radius: 2em;
     border: 2px solid rgba(255, 62, 0, 0);
     outline: none;
-    width: 200px;
+    width: 150px;
     margin: 0 10px;
     font-variant-numeric: tabular-nums;
     cursor: pointer;

@@ -1,108 +1,14 @@
 <script>
   import IntersectionObserver from "svelte-intersection-observer"
 
-  let words = [
-    {
-      id: 1,
-      kr: '것',
-      en: 'A thing or an object'
-    },
-    {
-      id: 2,
+  let words = []
+  for (let i = 1; i < 1000; i++) {
+    words.push({
+      id: i,
       kr: '하다',
       en: 'To do'
-    },
-    {
-      id: 3,
-      kr: '있다',
-      en: 'To be'
-    },
-    {
-      id: 4,
-      kr: '수',
-      en: 'Way, method, number'
-    },
-    {
-      id: 5,
-      kr: '나',
-      en: 'Je'
-    },
-    {
-      id: 6,
-      kr: '것',
-      en: 'A thing or an object'
-    },
-    {
-      id: 7,
-      kr: '하다',
-      en: 'To do'
-    },
-    {
-      id: 8,
-      kr: '있다',
-      en: 'To be'
-    },
-    {
-      id: 9,
-      kr: '수',
-      en: 'Way, method, number'
-    },
-    {
-      id: 10,
-      kr: '나',
-      en: 'Je'
-    },
-    {
-      id: 11,
-      kr: '것',
-      en: 'A thing or an object'
-    },
-    {
-      id: 12,
-      kr: '하다',
-      en: 'To do'
-    },
-    {
-      id: 13,
-      kr: '있다',
-      en: 'To be'
-    },
-    {
-      id: 14,
-      kr: '수',
-      en: 'Way, method, number'
-    },
-    {
-      id: 15,
-      kr: '나',
-      en: 'Je'
-    },
-    {
-      id: 16,
-      kr: '것',
-      en: 'A thing or an object'
-    },
-    {
-      id: 17,
-      kr: '하다',
-      en: 'To do'
-    },
-    {
-      id: 18,
-      kr: '있다',
-      en: 'To be'
-    },
-    {
-      id: 19,
-      kr: '수',
-      en: 'Way, method, number'
-    },
-    {
-      id: 20,
-      kr: '나',
-      en: 'test'
-    },
-  ]
+    })
+  }
 
   let searchValue = null
   let selected = null
@@ -129,6 +35,8 @@
 
   let showWords = new Array(words.length).fill(false)
   let rows = new Array(words.length)
+
+  let hideTranslation = false
 </script>
 
 <form on:submit={jumpToSearch}>
@@ -137,9 +45,13 @@
   <button type="submit" id="jump">
     Jump !
   </button>
+  <br>
+  <label class="container">
+    <input type="checkbox" bind:checked={hideTranslation}>
+    <span class="checkmark"></span>
+    Hide translations
+  </label>
 </form>
-
-<!-- TODO add checkbox, hide translation -->
 
 <div id="container">
   <table style="width: 95%">
@@ -155,7 +67,7 @@
           </button>
           {word.kr}
         </td>
-        <td style="width: 5%">
+        <td style="width: 55%" class:spoiler="{hideTranslation}">
           {word.en}
         </td>
       </tr>
@@ -200,7 +112,7 @@
 
   input {
     width: 50px;
-    padding: 1em;
+    padding: 0.5em 1em;
     border-radius: 2em;
     border: none;
     margin: 0 10px;
@@ -208,8 +120,8 @@
   }
 
   #jump {
-    padding: 1em 2em;
-    border-radius: 2em;
+    padding: 0.5em 1em;
+    border-radius: 1em;
     background-color: #db8888;
     color: white;
     border: none;
@@ -245,5 +157,18 @@
   ::-webkit-scrollbar-thumb {
     background: #db8888;
     border-radius: 25px;
+  }
+
+  input[type="checkbox"] {
+    width: 1em;
+    height: 1em;
+  }
+
+  .spoiler {
+    filter: blur(8px);
+  }
+
+  .spoiler:hover {
+    filter: blur(0px);
   }
 </style>
