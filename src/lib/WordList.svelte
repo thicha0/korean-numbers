@@ -87,11 +87,13 @@
     margin-right: auto;
     border-collapse: separate; 
     border-spacing: 0 8px;
+    margin-bottom: 25px;
   }
 
   tr {
     background-color: #39426e;
     transition: all 1s ease;
+    scroll-margin-top: 180px;
   }
 
   td {
@@ -160,7 +162,7 @@
   }
 
   .highlight {
-    border: 10px solid #eebbc3;
+    background-color: #96a1d6;
   }
 
   input[type="checkbox"] {
