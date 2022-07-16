@@ -1,17 +1,23 @@
 <script>
+  import Icon from './Icon.svelte'
+
+
   import { activeMenu } from '../store'
   let menus = [
     {
       id: 1,
-      title: 'Home'
+      title: 'Home',
+      icon: 'home'
     },
     {
       id: 2,
-      title: 'Word List'
+      title: 'Word List',
+      icon: 'list'
     },
     {
       id: 3,
-      title: 'Newsletter'
+      title: 'Newsletter',
+      icon: 'mail'
     }
   ]
 </script>
@@ -19,38 +25,47 @@
 
 <div id="menu">
   {#each menus as menu}
-    <button on:click={() => $activeMenu = menu.id} class="{$activeMenu === menu.id ? 'active' : ''}">
+    <div on:click={() => $activeMenu = menu.id} class="{$activeMenu === menu.id ? 'active' : ''}">
+      <Icon name={menu.icon} height="1em" /><br>
       {menu.title}
-    </button>
+    </div>
   {/each}
+</div>
+<div id="spacer">
+  &nbsp;
 </div>
 
 <style>
   #menu {
-    text-align: right;
-  }
-  
-  button {
-    font-family: inherit;
-    font-size: inherit;
-    padding: 0.5em;
-    border-radius: 2em;
-    color:black;
-    background-color: #D3CEDF;
-    border: 2px solid rgba(255, 62, 0, 0);
-    outline: none;
-    width: 150px;
-    margin: 0 10px;
-    font-variant-numeric: tabular-nums;
-    cursor: pointer;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+    background-color: #121629;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    border-bottom: 1px solid #eebbc3;
   }
 
-  button:hover {
+  #spacer {
+    height: 100px;
+  }
+  
+  #menu > div {
+    margin: auto;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    width: 150px;
+    font-size: 1.1em;
+  }
+
+  #menu > div:hover {
     filter: brightness(90%);
+    background-color: #232946;
   }
 
   .active {
-    color: white;
-    background-color: #0C347A;
+    border: 1px solid #eebbc3;
   }
 </style>

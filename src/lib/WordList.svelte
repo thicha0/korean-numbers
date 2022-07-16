@@ -1,5 +1,6 @@
 <script>
   import IntersectionObserver from "svelte-intersection-observer"
+  import Icon from './Icon.svelte'
 
   let words = []
   for (let i = 1; i < 1000; i++) {
@@ -30,6 +31,7 @@
   function pronounceKorean(text) {
     let toSpeak = new SpeechSynthesisUtterance(text)
     toSpeak.voice = voice
+    toSpeak.volume = 1
     speechSynthesis.speak(toSpeak)
   }
 
@@ -45,13 +47,16 @@
   <button type="submit" id="jump">
     Jump !
   </button>
-  <br>
-  <label class="container">
+  <label class="checkbox">
     <input type="checkbox" bind:checked={hideTranslation}>
     <span class="checkmark"></span>
     Hide translations
   </label>
 </form>
+
+<div id="spacer">
+  &nbsp;
+</div>
 
 <div id="container">
   <table style="width: 95%">
@@ -63,7 +68,7 @@
         </td>
         <td style="width: 35%">
           <button class="sound" on:click={() => pronounceKorean(word.kr)}>
-            🔊
+            <Icon name='volume-2' height="20px" width="20px" />
           </button>
           {word.kr}
         </td>
@@ -85,7 +90,7 @@
   }
 
   tr {
-    background-color: #f0e9e9;
+    background-color: #39426e;
     transition: all 1s ease;
   }
 
@@ -95,9 +100,10 @@
   }
 
   .sound {
-    background-color: #D3CEDF;
-    padding: 5px;
-    border-radius: 2em;
+    background-color: #eebbc3;
+    padding: 3px 4px 0px 4px;
+    margin-right: 5px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
   }
@@ -107,13 +113,24 @@
   }
 
   form {
-    margin: 30px 0;
+    margin: auto;
+    padding-top: 20px;
+    position: fixed;
+    height: 55px;
+    width: 100%;
+    background-color: #121629;
+    z-index: 99;
+    border-bottom: 1px solid #eebbc3;
+  }
+
+  #spacer {
+    height: 80px;
   }
 
   input {
     width: 50px;
     padding: 0.5em 1em;
-    border-radius: 2em;
+    border-radius: 8px;
     border: none;
     margin: 0 10px;
     font-size: 0.8em;
@@ -121,12 +138,14 @@
 
   #jump {
     padding: 0.5em 1em;
-    border-radius: 1em;
-    background-color: #db8888;
-    color: white;
+    border-radius: 8px;
+    background-color: #eebbc3;
+    color: #121629;
     border: none;
     cursor: pointer;
     font-size: 0.8em;
+    font-family: Arvo;
+    margin-right: 15px;
   }
 
   #jump:hover {
@@ -134,29 +153,14 @@
   }
 
   #container {
-    width: 70%;
-    height: 60vh;
+    max-width: 1000px;
     overflow: auto;
     margin: auto;
     scroll-behavior: smooth;
   }
 
   .highlight {
-    background-color: #c1d0de;
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #dbbdbf;
-    border-radius: 25px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #db8888;
-    border-radius: 25px;
+    border: 10px solid #eebbc3;
   }
 
   input[type="checkbox"] {

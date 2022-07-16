@@ -19,20 +19,46 @@
 
 <style>
   :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #F2D7D9;
+    font-family: Arvo, sans-serif;
+    background-color: #232946;
+    padding: 0;
+    margin: 0;
+    color: white;
+  }
+
+  :global(body) {
+    padding: 0;
+    margin: 0;
   }
 
   main {
     text-align: center;
-    padding: 1em;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
     font-size: 1.2em;
   }
 
   @font-face {
     font-family: HoonWhiteCat;
     src: url('./assets/fonts/HoonWhiteCat.ttf');
+  }
+
+  @font-face {
+    font-family: Arvo;
+    src: url('./assets/fonts/Arvo-Regular.ttf');
+  }
+
+  :root::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  :root::-webkit-scrollbar-track {
+    background: #dbbdbf;
+    border-radius: 25px;
+  }
+
+  :root::-webkit-scrollbar-thumb {
+    background: #db8888;
+    border-radius: 25px;
   }
 </style>
