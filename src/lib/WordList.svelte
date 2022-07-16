@@ -3,7 +3,7 @@
   import Icon from './Icon.svelte'
 
   let words = []
-  for (let i = 1; i < 1000; i++) {
+  for (let i = 1; i < 100; i++) {
     words.push({
       id: i,
       kr: '하다',

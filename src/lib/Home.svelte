@@ -8,7 +8,7 @@
   Welcome to this website !
 </p>
 <p>
-  Here you will find multiple ways to practice your korean !
+  You will find multiple ways to learn and practice your korean !
 </p>
 
 <style>

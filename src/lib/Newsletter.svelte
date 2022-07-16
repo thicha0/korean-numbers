@@ -1,51 +1,49 @@
 <script>
   import logo from '../assets/flag_korea.png'
+
+  let email = null
+  let error = null
+
+  function subscribe() {
+    // TODO
+    console.log('subscribed', email)
+  }
 </script>
 
-<h1>
-  Newsletter
-</h1>
-<div style="display: flex; margin-top: 50px; padding: 0 100px;">
-  <div id="infos">
-    <img src={logo} alt="South Korea Flag" />
-    <p>Speed up your korean learning !</p>
-    <p>Receive daily email with 10 words to learn per day.</p>
-    <p>See your progress.</p>
-    <p><i>Cancel anytime.</i></p>
-  </div>
-  <div id="form">
-    <input type="text" placeholder="Your email" />
-    <button>Subscribe</button>
-  </div>
+<div id="container">
+  <img src={logo} alt="South Korea Flag" />
+  <p>Want to speed up your korean learning ?</p>
+  <p><b>Subscribe to our newsletter* !</b></p>
+  <p>Receive 10 korean words to learn every day !</p>
+  <br>
+  <br>
+  <input type="text" bind:value={email} placeholder="Your email" class:error />
+  <button on:click={subscribe}>Subscribe</button>
+  <p style="font-size: 0.7em;"><i>*Cancel anytime.</i></p>
 </div>
 
 <style>
-  #infos {
-    width: 50%;
-    float: left;
-    background-color: #D3CEDF;
-    color: black;
-    border-radius: 10px;
-    font-size: 20px;
+  .error {
+    background-color: red;
+  }
+
+  #container {
+    background-color: #39426e;
+    margin-top: 50px;
+    margin: 50px 50px;
+    align-items: stretch;
+    padding: 20px;
   }
 
   img {
-    max-height: 10rem;
-    margin-top: 3rem;
-  }
-
-  #form {
-    display: flex;
-    float: right;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
+    max-height: 8rem;
+    border-radius: 8px;
   }
 
   input {
-    border-radius: 100px;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 8px;
     padding: 0.5em 1em;
     font-size: 1em;
     border: none;
@@ -57,15 +55,14 @@
     font-family: inherit;
     font-size: inherit;
     padding: 0.5em;
-    color:white;
-    background-color: #0C347A;
-    border-radius: 2em;
+    color:black;
+    background-color: #eebbc3;
+    border-radius: 8px;
     border: 2px solid rgba(255, 62, 0, 0);
     outline: none;
     width: 150px;
-    margin: 0 10px;
-    font-variant-numeric: tabular-nums;
     cursor: pointer;
+    margin-left: 10px;
   }
 
   button:hover {
