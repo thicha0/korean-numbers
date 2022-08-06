@@ -14,7 +14,7 @@
   <img src={logo} alt="South Korea Flag" />
   <p>Want to speed up your korean learning ?</p>
   <p><b>Subscribe to our newsletter* !</b></p>
-  <p>Receive 10 korean words to learn every day !</p>
+  <p>You will receive 10 korean words to learn every day !</p>
   <br>
   <br>
   <input type="text" bind:value={email} placeholder="Your email" class:error />

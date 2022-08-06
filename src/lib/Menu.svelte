@@ -16,6 +16,11 @@
     },
     {
       id: 3,
+      title: 'Vocabulary',
+      icon: 'book-open'
+    },
+    {
+      id: 4,
       title: 'Newsletter',
       icon: 'mail'
     }

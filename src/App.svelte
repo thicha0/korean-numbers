@@ -2,6 +2,7 @@
   import Menu from './lib/Menu.svelte'
   import Home from './lib/Home.svelte'
   import WordList from './lib/WordList.svelte'
+  import Vocabulary from './lib/Vocabulary.svelte'
   import Newsletter from './lib/Newsletter.svelte'
   import { activeMenu } from './store'
 </script>
@@ -11,6 +12,8 @@
   {#if $activeMenu === 2}
     <WordList />
   {:else if $activeMenu === 3}
+    <Vocabulary />
+  {:else if $activeMenu === 4}
     <Newsletter />
   {:else}
     <Home />
