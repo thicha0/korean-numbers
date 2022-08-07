@@ -16,7 +16,7 @@
     },
     {
       id: 3,
-      title: 'Vocabulary',
+      title: 'Lessons',
       icon: 'book-open'
     },
     {

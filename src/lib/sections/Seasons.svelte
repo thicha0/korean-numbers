@@ -1,3 +1,0 @@
-<div>
-    Hello here
-</div>
