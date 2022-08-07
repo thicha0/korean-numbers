@@ -27,6 +27,7 @@
     padding: 0;
     margin: 0;
     color: white;
+    overflow-x: hidden;
   }
 
   :global(body) {
