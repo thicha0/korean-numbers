@@ -17,7 +17,6 @@ $SNOWDROPS_LENGTH: 100;
 
 // Wrapper for snows, this shows background
 .g-snows {
-  transition: all 0.5s ease;
   margin: auto;
   width: 100%;
   height: 100%;

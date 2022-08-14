@@ -1,6 +1,8 @@
 <script>
   import Icon from '../Icon.svelte'
+  import Flowers from './seasons/Flowers.svelte';
   import Snowdrop from './seasons/Snowdrop.svelte'
+  import Sun from './seasons/Sun.svelte';
 
 
   let prefixImage = '/src/assets/icons/season/'
@@ -11,14 +13,14 @@
       en: 'Spring',
       kr: '봄',
       image: prefixImage + 'spring' + suffixImage,
-      component: null,
+      component: Flowers,
     },
     {
       id: 2,
       en: 'Summer',
       kr: '여름',
       image: prefixImage + 'summer' + suffixImage,
-      component: null,
+      component: Sun,
     },
     {
       id: 3,
@@ -36,9 +38,14 @@
     },
   ]
   let activeSeason = null
+  let closing = false
   function selectSeason (season) {
     pronounceKorean(season.kr)
-    activeSeason = season
+    closing = true
+    setTimeout(() => {
+      closing = false
+      activeSeason = season
+    }, 550)
   }
 
   let speechSynthesis = window.speechSynthesis
@@ -57,7 +64,9 @@
 </script>
 
 {#if activeSeason !== null}
-  <svelte:component this={activeSeason.component}/>
+  <div class="{closing ? 'hidden' : ''}">
+    <svelte:component this={activeSeason.component}/>
+  </div>
 {/if}
 <div id="container">
   <h1>
@@ -125,5 +134,11 @@
   .korean {
     font-family: BinggraeSamanco;
     font-size: 2.5em;
+  }
+
+  .hidden {
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    background-color: red;
   }
 </style>
