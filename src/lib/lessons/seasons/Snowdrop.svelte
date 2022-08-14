@@ -17,14 +17,18 @@ $SNOWDROPS_LENGTH: 100;
 
 // Wrapper for snows, this shows background
 .g-snows {
+  transition: all 0.5s ease;
   margin: auto;
   width: 100%;
-  height: 540px;
+  height: 100%;
+  top: 0;
+  left: 0;
   position: absolute;
   z-index: -1;
 }
 
 .g-snows > li {
+  transition: all 0.5s ease;
   // NOTE: Opacity zero is required due to appearance of snow.
   opacity: 0;
   position: absolute;
@@ -42,7 +46,7 @@ $SNOWDROPS_LENGTH: 100;
   $snow-size-base: 30;
   $browser-buffer: 50;
   $left-position: 100 + $browser-buffer;
-  $animate-speed-base: 10000;
+  $animate-speed-base: 20000;
   $minimum-falling-speed: 5000;
   $animate-delay-base: 5000;
   $blur-base: 5;
@@ -62,7 +66,7 @@ $SNOWDROPS_LENGTH: 100;
 } 
   
 @keyframes snow-drop {
-  $window-height-threshold: 2;
+  $window-height-threshold: 1;
 
   0% {
     transform: translate(0, 0);
@@ -79,7 +83,7 @@ $SNOWDROPS_LENGTH: 100;
   }
 
   25% {
-    transform: translate(0, 250px / $window-height-threshold);
+    transform: translate(0, 25vh / $window-height-threshold);
     opacity: 0.75;
   }
 
@@ -92,7 +96,7 @@ $SNOWDROPS_LENGTH: 100;
   }
 
   50% {
-    transform: translate(0, 500px / $window-height-threshold);
+    transform: translate(0, 50vh / $window-height-threshold);
     opacity: 1;
     margin-left: -15px;
   }
@@ -106,7 +110,7 @@ $SNOWDROPS_LENGTH: 100;
   }
 
   75% {
-    transform: translate(0, 750px / $window-height-threshold);
+    transform: translate(0, 75vh / $window-height-threshold);
     opacity: 0.5;
   }
 
@@ -115,7 +119,7 @@ $SNOWDROPS_LENGTH: 100;
   }
 
   100% {
-    transform: translate(0, 1000px / $window-height-threshold);
+    transform: translate(0, 100vh / $window-height-threshold);
     opacity: 0;
   }
 }
