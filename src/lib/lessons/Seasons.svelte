@@ -1,8 +1,9 @@
 <script>
   import Icon from '../Icon.svelte'
-  import Flowers from './seasons/Flowers.svelte';
+  import Flowers from './seasons/Flowers.svelte'
   import Snowdrop from './seasons/Snowdrop.svelte'
-  import Sun from './seasons/Sun.svelte';
+  import Sun from './seasons/Sun.svelte'
+  import FallingLeaves from './seasons/FallingLeaves.svelte'
 
 
   let prefixImage = '/src/assets/icons/season/'
@@ -27,7 +28,7 @@
       en: 'Automn',
       kr: '가을',
       image: prefixImage + 'automn' + suffixImage,
-      component: null,
+      component: FallingLeaves,
     },
     {
       id: 4,
