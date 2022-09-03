@@ -11,19 +11,14 @@
     },
     {
       id: 2,
-      title: 'Word List',
-      icon: 'list'
-    },
-    {
-      id: 3,
       title: 'Lessons',
       icon: 'book-open'
     },
     {
-      id: 4,
-      title: 'Newsletter',
-      icon: 'mail'
-    }
+      id: 3,
+      title: 'Word List',
+      icon: 'list'
+    },
   ]
 </script>
 

@@ -3,18 +3,15 @@
   import Home from './lib/Home.svelte'
   import WordList from './lib/WordList.svelte'
   import Lessons from './lib/Lessons.svelte'
-  import Newsletter from './lib/Newsletter.svelte'
   import { activeMenu } from './store'
 </script>
 
 <main>
   <Menu />
   {#if $activeMenu === 2}
-    <WordList />
-  {:else if $activeMenu === 3}
     <Lessons />
-  {:else if $activeMenu === 4}
-    <Newsletter />
+  {:else if $activeMenu === 3}
+    <WordList />
   {:else}
     <Home />
   {/if}

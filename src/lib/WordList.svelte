@@ -2,14 +2,7 @@
   import IntersectionObserver from "svelte-intersection-observer"
   import Icon from './Icon.svelte'
 
-  let words = []
-  for (let i = 1; i < 100; i++) {
-    words.push({
-      id: i,
-      kr: '하다',
-      en: 'To do'
-    })
-  }
+  import { words } from '../assets/json/words.json'
 
   let searchValue = null
   let selected = null
@@ -67,13 +60,13 @@
           {word.id}
         </td>
         <td style="width: 35%">
-          <button class="sound" on:click={() => pronounceKorean(word.kr)}>
+          <button class="sound" on:click={() => pronounceKorean(word.korean)}>
             <Icon name='volume-2' height="20px" width="20px" />
           </button>
-          {word.kr}
+          {word.korean}
         </td>
         <td style="width: 55%" class:spoiler="{hideTranslation}">
-          {word.en}
+          {word.english}
         </td>
       </tr>
     </IntersectionObserver>

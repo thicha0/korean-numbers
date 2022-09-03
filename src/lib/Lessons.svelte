@@ -2,6 +2,7 @@
   import Icon from './Icon.svelte'
   // sections
   import Seasons from './lessons/Seasons.svelte'
+  import Colors from './lessons/Colors.svelte'
 
   let categories = [
     {
@@ -9,6 +10,12 @@
       text: 'Seasons',
       image: '/src/assets/icons/season/season.png',
       component: Seasons
+    },
+    {
+      id: 2,
+      text: 'Colors',
+      image: '/src/assets/icons/colors/rainbow.png',
+      component: Colors
     },
   ]
   let activeCategory = null
