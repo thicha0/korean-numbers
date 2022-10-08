@@ -1,5 +1,5 @@
 <script>
-    import logo from '../assets/flag_korea.png'
+    import logo from '../assets/Flag_of_South_Korea.svg'
 </script>
 
 <img src={logo} alt="South Korea Flag" />
