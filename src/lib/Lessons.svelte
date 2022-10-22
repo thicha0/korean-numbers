@@ -3,6 +3,7 @@
   // sections
   import Seasons from './lessons/Seasons.svelte'
   import Colors from './lessons/Colors.svelte'
+  import Numbers from './lessons/Numbers.svelte'
 
   let categories = [
     {
@@ -16,6 +17,12 @@
       text: 'Colors',
       image: '/src/assets/icons/colors/rainbow.png',
       component: Colors
+    },
+    {
+      id: 3,
+      text: 'Numbers',
+      image: '/src/assets/icons/numbers/numbers.png',
+      component: Numbers
     },
   ]
   let activeCategory = null
