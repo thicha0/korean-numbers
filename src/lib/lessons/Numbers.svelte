@@ -1,4 +1,6 @@
 <script>
+import Icon from '../Icon.svelte'
+
 let intervalId = null
 let currentNumber = 0
 let numberCount = 0
@@ -23,6 +25,7 @@ function reset() {
     if (intervalId) {
         clearInterval(intervalId);
         currentTimer = '2:00';
+        intervalId = null
     }
 }
 
@@ -62,6 +65,7 @@ function numberToSinoKorean(number) {
 function startTimer() {
   if (intervalId !== null) {
     clearInterval(intervalId);
+    intervalId = null
   }
   let timer = 120,
     minutes,
@@ -73,7 +77,6 @@ function startTimer() {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    console.log(minutes, seconds)
     currentTimer = minutes + ":" + seconds;
 
     if (timer > 0) {
@@ -83,12 +86,63 @@ function startTimer() {
     }
   }, 1000);
 }
+
+let speechSynthesis = window.speechSynthesis
+    let voice = null
+    speechSynthesis.getVoices().forEach((v)=>{
+        if (v.name === 'Microsoft Heami - Korean (Korean)') {
+            voice = v
+        }
+    })
+    function pronounceKorean(text) {
+        let toSpeak = new SpeechSynthesisUtterance(text)
+        toSpeak.voice = voice
+        toSpeak.volume = 1
+        speechSynthesis.speak(toSpeak)
+    }
 </script>
 
-<div id="app">{currentNumber}</div>
-<button id="start" on:click={start}>Start</button>
-<button id="reset" on:click={reset}>Reset</button>
-<button id="next" on:click={nextNumber}>Next</button>
-<div id="count">{numberCount}</div>
+<div id="container">
+  <h1>
+      Numbers - 숫자
+      <button class="sound" on:click={() => pronounceKorean('숫자')}>
+      <Icon name='volume-2' height="20px" width="20px" />
+    </button>
+  </h1>
+  <div id="quizz">
+    {#if intervalId !== null}
+    <p id="count">Question {numberCount} - Time remaining: {currentTimer}</p>
+    <div id="app">{currentNumber}</div>
+    <button id="reset" on:click={reset}>Reset</button>
+    <button id="next" on:click={nextNumber}>Next</button>
+    {:else}
+    <button id="start" on:click={start}>Start</button>
+    {/if}
+  </div>
+</div>
 
-<span id="time">{currentTimer}</span>
+<style lang="scss">
+#container {
+    margin: auto;
+    margin-top: -50px;
+    max-width: 1000px;
+}
+
+.sound {
+  background-color: #eebbc3;
+  padding: 3px 4px 0px 4px;
+  margin-right: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.sound:hover {
+  background-color: #abc0d4;
+}
+
+#quizz {
+  font-size: 1.5em;
+}
+
+</style>
