@@ -24,7 +24,7 @@ function reset() {
     numberCount = 0;
     if (intervalId) {
         clearInterval(intervalId);
-        currentTimer = '2:00';
+        currentTimer = '02:00';
         intervalId = null
     }
 }
@@ -113,10 +113,13 @@ let speechSynthesis = window.speechSynthesis
     {#if intervalId !== null}
     <p id="count">Question {numberCount} - Time remaining: {currentTimer}</p>
     <div id="app">{currentNumber}</div>
-    <button id="reset" on:click={reset}>Reset</button>
-    <button id="next" on:click={nextNumber}>Next</button>
+    <button id="reset" class="btn" on:click={reset}>Reset</button>
+    <button id="next" class="btn" on:click={nextNumber}>Next</button>
     {:else}
-    <button id="start" on:click={start}>Start</button>
+    <p>
+      You will have 2 minutes to find a maximum of numbers !
+    </p>
+    <button id="start" class="btn" on:click={start}>Start !</button>
     {/if}
   </div>
 </div>
@@ -143,6 +146,17 @@ let speechSynthesis = window.speechSynthesis
 
 #quizz {
   font-size: 1.5em;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  background-color: #eebbc3;
+  color: #121629;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-family: Arvo;
 }
 
 </style>
