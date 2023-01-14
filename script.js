@@ -72,20 +72,31 @@ function pronounceKorean(text) {
 }
 
 let sinokorean = false
+const switchInput = document.querySelector('.checkbox')
+switchInput.addEventListener('change', () => {
+    sinokorean = !sinokorean
+    show.classList.add('hide')
+    setTimeout(() => {
+        show.textContent = null
+    }, 200)
+})
+
 let hand
 const show = document.querySelector('.show')
 
 function speakNumber(number) {
     hand.classList.add('hide')
-    setTimeout(() => {
-        hand.style.display = 'none'
-    }, 500)
+    show.classList.add('hide')
     const key = document.querySelector(`.key[data-key="${number.value}"]`)
     if (key.classList.contains('active')) return
     key.classList.add('active')
     const toPronounce = sinokorean ? number.sinokorean : number.korean
     pronounceKorean(toPronounce)
-    show.textContent = toPronounce
+    setTimeout(() => {
+        show.textContent = toPronounce
+        show.classList.remove('hide')
+        hand.style.display = 'none'
+    }, 200)
     setTimeout(function () {
         key.classList.remove('active')
     }, 500)
@@ -125,3 +136,37 @@ function displayKeys () {
 
 displayKeys()
 
+// Slide
+const nextBtn = document.querySelector('.next')
+const previousBtn = document.querySelector('.prev')
+
+let currentStep = 1
+showStep(currentStep)
+
+function nextStep() {
+  showStep(currentStep++)
+}
+
+function previousStep() {
+    showStep(currentStep++)
+}
+
+nextBtn.addEventListener('click', nextStep)
+previousBtn.addEventListener('click', previousStep)
+
+function showStep(n) {
+    let i
+    let steps = document.querySelectorAll('.step');
+    if (n >= steps.length) {
+        currentStep = 1
+    }
+    if (n < 1) {
+        currentStep = steps.length
+    }
+    for (i = 0; i < steps.length; i++) {
+        steps[i].style.display = 'none'
+    }
+    steps[currentStep-1].style.display = 'block'
+    nextBtn.style.display = currentStep < steps.length ? 'inline' : 'none'
+    previousBtn.style.display = currentStep > 1 ? 'inline' : 'none'
+}
