@@ -71,14 +71,24 @@ function pronounceKorean(text) {
     speechSynthesis.speak(toSpeak)
 }
 
-let sinokorean = false
+let sinokorean = true
 const switchInput = document.querySelector('.checkbox')
+const skTitle = document.querySelector('.sinokorean')
+const kTitle = document.querySelector('.korean')
 switchInput.addEventListener('change', () => {
     sinokorean = !sinokorean
     show.classList.add('hide')
     setTimeout(() => {
         show.textContent = null
     }, 200)
+    
+    if (sinokorean) {
+        skTitle.classList.add('active-method')
+        kTitle.classList.remove('active-method')
+    } else {
+        kTitle.classList.add('active-method')
+        skTitle.classList.remove('active-method')
+    }
 })
 
 let hand
@@ -102,7 +112,18 @@ function speakNumber(number) {
     }, 500)
 }
 
+let waiting = null
+
+function showHelpers() {
+    hand.style.display = 'flex'
+    hand.classList.remove('hide')
+}
+
 function keyPressed(e) {
+    if (waiting) {
+        clearTimeout(waiting)
+    }
+    waiting = setTimeout(showHelpers, 8000)
     let found = numbers.find(number => number.value === +e.key)
     if (found) {
         speakNumber(found)
@@ -110,6 +131,10 @@ function keyPressed(e) {
 }
 
 function keyClicked(e) {
+    if (waiting) {
+        clearTimeout(waiting)
+    }
+    waiting = setTimeout(showHelpers, 8000)
     let found = numbers.find(number => number.value === +this.dataset.key)
     if (found) {
         speakNumber(found)
@@ -135,38 +160,3 @@ function displayKeys () {
 }
 
 displayKeys()
-
-// Slide
-const nextBtn = document.querySelector('.next')
-const previousBtn = document.querySelector('.prev')
-
-let currentStep = 1
-showStep(currentStep)
-
-function nextStep() {
-  showStep(currentStep++)
-}
-
-function previousStep() {
-    showStep(currentStep++)
-}
-
-nextBtn.addEventListener('click', nextStep)
-previousBtn.addEventListener('click', previousStep)
-
-function showStep(n) {
-    let i
-    let steps = document.querySelectorAll('.step');
-    if (n >= steps.length) {
-        currentStep = 1
-    }
-    if (n < 1) {
-        currentStep = steps.length
-    }
-    for (i = 0; i < steps.length; i++) {
-        steps[i].style.display = 'none'
-    }
-    steps[currentStep-1].style.display = 'block'
-    nextBtn.style.display = currentStep < steps.length ? 'inline' : 'none'
-    previousBtn.style.display = currentStep > 1 ? 'inline' : 'none'
-}
