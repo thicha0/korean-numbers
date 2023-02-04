@@ -92,11 +92,14 @@ switchInput.addEventListener('change', () => {
 })
 
 let hand
+const padHand = document.querySelector('.pad-hand')
 const show = document.querySelector('.show')
 
 function speakNumber(number) {
     hand.classList.add('hide')
     show.classList.add('hide')
+    padHand.classList.add('hide')
+    
     const key = document.querySelector(`.key[data-key="${number.value}"]`)
     if (key.classList.contains('active')) return
     key.classList.add('active')
@@ -106,6 +109,7 @@ function speakNumber(number) {
         show.textContent = toPronounce
         show.classList.remove('hide')
         hand.style.display = 'none'
+        padHand.style.display = 'none'
     }, 200)
     setTimeout(function () {
         key.classList.remove('active')
@@ -117,6 +121,9 @@ let waiting = null
 function showHelpers() {
     hand.style.display = 'flex'
     hand.classList.remove('hide')
+
+    padHand.style.display = 'flex'
+    padHand.classList.remove('hide')
 }
 
 function keyPressed(e) {
