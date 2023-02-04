@@ -180,6 +180,17 @@ input:checked + .slider:before {
     opacity: 0.5;
 }
 
+.pad-hand {
+    height: 100px;
+    animation: zooming 2s infinite;
+    transition: all .8s;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.5;
+    bottom: 50px;
+    right: 50px;
+}
+
 .show {
     text-align: center;
     margin: auto;
